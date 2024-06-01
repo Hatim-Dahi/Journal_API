@@ -22,4 +22,19 @@ public class EntryController {
     public void createEntry(@RequestBody JournalEntity newEntry){
         entries.put(newEntry.getId(), newEntry);
     }
+
+    @GetMapping("/id/{myId}")
+    public JournalEntity getId(@PathVariable Long myId){
+        return entries.get(myId);
+    }
+    @DeleteMapping("/id/{myId}")
+    public JournalEntity deleteId(@PathVariable Long myId){
+        return entries.remove(myId);
+    }
+
+    @PutMapping("/id/{myId}")
+    public JournalEntity updateId(@PathVariable Long myId, @RequestBody JournalEntity myEntery){
+        return entries.put(myId, myEntery);
+    }
+
 }
